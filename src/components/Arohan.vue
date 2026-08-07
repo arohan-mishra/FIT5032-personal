@@ -1,4 +1,5 @@
 <script setup>
+defineOptions({ name: 'ArohanIntroduction' })
 </script>
 
 <template>
@@ -14,8 +15,8 @@
 
 <style scoped>
 h1 {
-  font-weight: 500;
+  position: relative;
   font-size: 2.6rem;
-  position: relative;    
+  font-weight: 500;
 }
 </style>
