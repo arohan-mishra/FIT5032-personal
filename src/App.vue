@@ -1,10 +1,10 @@
 <script setup>
-import JSONActivities from './components/JSON.vue'
+import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
 </script>
 
 <template>
   <main>
-    <JSONActivities />
+    <LibraryRegistrationForm />
   </main>
 </template>
 
