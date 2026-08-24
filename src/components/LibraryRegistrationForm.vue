@@ -95,25 +95,25 @@
       </div>
     </div>
 
-    <div v-if="submittedCards.length" class="row mt-5">
-      <div class="d-flex flex-wrap justify-content-center">
-        <div
-          v-for="(card, index) in submittedCards"
-          :key="index"
-          class="card m-2"
-          style="width: 18rem"
+    <div v-if="submittedUsers.length" class="row mt-5">
+      <div class="col-12">
+        <h2 class="text-center mb-3">Submitted User Information</h2>
+        <DataTable
+          :value="submittedUsers"
+          striped-rows
+          scrollable
+          table-style="min-width: 50rem"
         >
-          <div class="card-header">User Information</div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Username: {{ card.username }}</li>
-            <li class="list-group-item">Password: {{ card.password }}</li>
-            <li class="list-group-item">
-              Australian Resident: {{ card.isAustralian ? 'Yes' : 'No' }}
-            </li>
-            <li class="list-group-item">Gender: {{ card.gender }}</li>
-            <li class="list-group-item">Reason: {{ card.reason }}</li>
-          </ul>
-        </div>
+          <Column field="username" header="Username" />
+          <Column field="password" header="Password" />
+          <Column header="Australian Resident">
+            <template #body="{ data }">
+              {{ data.isAustralian ? 'Yes' : 'No' }}
+            </template>
+          </Column>
+          <Column field="gender" header="Gender" />
+          <Column field="reason" header="Reason" />
+        </DataTable>
       </div>
     </div>
   </div>
@@ -121,6 +121,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
 
 defineOptions({ name: 'LibraryRegistrationForm' })
 
@@ -133,7 +135,7 @@ const emptyForm = () => ({
 })
 
 const formData = ref(emptyForm())
-const submittedCards = ref([])
+const submittedUsers = ref([])
 const errors = ref({
   username: null,
   password: null,
@@ -199,7 +201,7 @@ const submitForm = () => {
 
   if (!isValid) return
 
-  submittedCards.value.push({ ...formData.value })
+  submittedUsers.value.push({ ...formData.value })
   clearForm()
 }
 
@@ -214,22 +216,3 @@ const clearForm = () => {
   }
 }
 </script>
-
-<style scoped>
-.card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-  padding: 10px;
-  border-radius: 10px 10px 0 0;
-  background-color: #275fda;
-  color: white;
-}
-
-.list-group-item {
-  padding: 10px;
-}
-</style>
