@@ -1,15 +1,22 @@
-<script setup>
-import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
-</script>
-
 <template>
-  <main>
-    <LibraryRegistrationForm />
-  </main>
+  <div class="main-container">
+    <header v-if="showHeader">
+      <BHeader />
+    </header>
+    <main class="main-box">
+      <RouterView />
+    </main>
+  </div>
 </template>
 
-<style scoped>
-main {
-  min-height: 100vh;
-}
-</style>
+<script setup>
+import { computed } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
+import BHeader from './components/BHeader.vue'
+
+const route = useRoute()
+
+const showHeader = computed(() => {
+  return route.name !== 'CountBookAPI'
+})
+</script>
