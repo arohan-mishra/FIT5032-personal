@@ -1,0 +1,1 @@
+import{E as e,M as t,O as n}from"./index-B-SgT--B.js";import{t as r}from"./_plugin-vue_export-helper-BDNMzG2s.js";var i={},a={class:`container py-5`};function o(r,i){return t(),n(`main`,a,[...i[0]||=[e(`h1`,null,`About Our Library`,-1),e(`p`,null,`Our library provides books and online resources to registered members.`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};
