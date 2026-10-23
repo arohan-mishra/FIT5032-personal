@@ -20,7 +20,7 @@
 import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
 
-const apikey = '0a047edc34610e1393eb7658364b9e72'
+const apikey = import.meta.env.VITE_OPENWEATHER_API_KEY
 
 const city = ref('')
 const weatherData = ref(null)
